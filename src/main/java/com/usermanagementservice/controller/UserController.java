@@ -12,11 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(
-        value = "/api/users",
-        consumes = {MediaType.APPLICATION_JSON_VALUE},
-        produces = {MediaType.APPLICATION_JSON_VALUE}
-)
+@RequestMapping("/api/users")
 public class UserController {
 
     private UserService userService;
@@ -25,28 +21,40 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping()
+    @PostMapping
     public ResponseEntity<Void> createUser(@RequestBody UserRegistrationDTO userRegistrationDTO) {
         userService.createUser(userRegistrationDTO);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-    @GetMapping
+    @GetMapping(
+            produces = {MediaType.APPLICATION_JSON_VALUE}
+    )
     public ResponseEntity<List<UserDTO>> getAllUsers() {
         return ResponseEntity.ok(userService.findAllUsers());
     }
 
-    @GetMapping("/id/{id}")
+    @GetMapping(
+            value = "/{id}",
+            produces = {MediaType.APPLICATION_JSON_VALUE}
+    )
     public ResponseEntity<UserDTO> getUser(@PathVariable Long id) {
         return ResponseEntity.ok(userService.findUserById(id));
     }
 
-    @GetMapping("/email/{email}")
+    @GetMapping(
+            value = "/email/{email}",
+            produces = {MediaType.APPLICATION_JSON_VALUE}
+    )
     public ResponseEntity<UserDTO> getUser(@PathVariable String email) {
         return ResponseEntity.ok(userService.findUserByEmail(email));
     }
 
-    @PutMapping("/{id}")
+    @PutMapping(
+            value = "/{id}",
+            consumes = {MediaType.APPLICATION_JSON_VALUE},
+            produces = {MediaType.APPLICATION_JSON_VALUE}
+    )
     public ResponseEntity<Void> updateUser(@PathVariable Long id, @RequestBody UserUpdateDTO userDTO) {
         userService.updateUser(id, userDTO);
         return ResponseEntity.noContent().build();
@@ -58,7 +66,10 @@ public class UserController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/example")
+    @GetMapping(
+            value = "/example",
+            produces = {MediaType.APPLICATION_JSON_VALUE}
+    )
     public ResponseEntity<UserRegistrationDTO> getUserExample() {
         return ResponseEntity.ok(userService.getUserRegistrationDTOexample());
     }
