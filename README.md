@@ -2,7 +2,7 @@
 
 # User and Address Management Service
 
-This microservice, built with Spring Boot, is responsible for managing users and addresses. The service provides a REST API that enables the retrieval, creation, updating, and deletion of user and address entities.
+This is a Spring Boot microservice responsible for managing users and addresses. This service provides a REST API that enables the retrieval, creation, updating, and deletion of user and address entities.
 
 ## Installation
 
