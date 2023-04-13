@@ -2,7 +2,7 @@
 
 # Serviço de Gerenciamento de Usuários e Endereços
 
-Este microserviço, construído com Spring Boot, é responsável pelo gerenciamento de usuários e endereços. O serviço fornece uma API REST que permite a recuperação, criação, atualização e exclusão de entidades de usuário e endereço.
+Este é um microsserviço feito com Spring Boot, responsável pelo gerenciamento de usuários e endereços. O serviço fornece uma API REST que permite a recuperação, criação, atualização e exclusão de entidades de usuário e endereço.
 
 ## Instalação
 
